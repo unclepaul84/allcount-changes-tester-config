@@ -10,7 +10,7 @@ A.app({
     forceLocale: 'en',
     menuItems: [
         {
-            name: "Foo",
+            name: "Foo 2",
             entityTypeId: "Foo"
         }
     ],
