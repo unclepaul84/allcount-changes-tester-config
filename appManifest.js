@@ -31,7 +31,7 @@ A.app({
                     
                     json:Fields.json("Json", {
           type: "object",
-          title: "Big Automobile",
+          title: "",
           properties: {
             make: {
               type: "string",
