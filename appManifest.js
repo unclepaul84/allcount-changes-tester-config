@@ -15,7 +15,7 @@ A.app({
         return {
             Foo: {
                 fields: {
-                    foo: Fields.text("Foo"),
+                    foo: Fields.text("Foo").regex('aaa'),
                     bar: Fields.text("Bar").permissions({
                         write: ['manager']
                     }),
