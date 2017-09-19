@@ -15,7 +15,7 @@ A.app({
         return {
             Foo: {
                 fields: {
-                    foo: Fields.text("Foo").regex('aaa'),
+                    foo: Fields.text("Foo").regex('aaa').validationMessage("Must start with aaa"),
                     bar: Fields.text("Bar").permissions({
                         write: ['manager']
                     }),
