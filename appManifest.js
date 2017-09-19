@@ -8,8 +8,8 @@ A.app({
         tenant: "paulkotlyarhotmail.onmicrosoft.com",  
         appId: "a0cad9b7-ac41-4470-9df3-494aea3f327d",
         appSecret: "DM0O9GndzCsGiAX0Jtda8z8fmn8BKk0l8FgXU2lDfnc=",
-        authorizedGroups: ['Company Administrator'],
-        group2RoleMapping: [ {group: "Company Administrator", role: "admin"}, {group: "allcountmanagers", role: "manager"}]
+        authorizedAADGroups: ['Company Administrator'],
+        aadGroup2RoleMapping: [ {group: "Company Administrator", role: "admin"}, {group: "allcountmanagers", role: "manager"}]
     },
     forceLocale: 'en',
     menuItems: [
