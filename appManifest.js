@@ -30,7 +30,6 @@ A.app({
                     
                     
                     json:Fields.json("Json", {
-        schema: {
           type: "object",
           title: "Car",
           properties: {
@@ -58,8 +57,7 @@ A.app({
               ],
               default: 2008
             }
-          }
-        }
+          }     
       }),                
                     ownerOnly: Fields.text("Foo and Bar").permissions({
                         read: ['owner']
