@@ -27,7 +27,7 @@ A.app({
                     bar: Fields.text("Bar").permissions({
                         write: ['manager']
                     }),
-                    
+                    file: Fields.attachment("doc"),
                     
                     json:Fields.json("Json", {
           type: "object",
