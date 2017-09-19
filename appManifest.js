@@ -5,7 +5,7 @@ A.app({
     adalAppSecret: "DM0O9GndzCsGiAX0Jtda8z8fmn8BKk0l8FgXU2lDfnc=",
     
     adal: {
-        tenant: "paulkotlyarhotmail.onmicrosoft.com",  
+        tenant: "paulkotlyarhotmail.onmicrosoft.com",   
         appId: "a0cad9b7-ac41-4470-9df3-494aea3f327d",
         appSecret: "DM0O9GndzCsGiAX0Jtda8z8fmn8BKk0l8FgXU2lDfnc=",
         authorizedAADGroups: ['Company Administrator'],
@@ -29,92 +29,36 @@ A.app({
                     }),
                     file: Fields.attachment("doc"),
                     
-                    json:Fields.json("Json",{
-  "title": "Person",
-  "type": "object",
-  "properties": {
-    "name": {
-      "type": "string",
-      "description": "First and Last name",
-      "minLength": 4,
-      "default": "Jeremy Dorn"
-    },
-    "age": {
-      "type": "integer",
-      "default": 25,
-      "minimum": 18,
-      "maximum": 99
-    },
-    "favorite_color": {
-      "type": "string",
-      "format": "color",
-      "title": "favorite color",
-      "default": "#ffa500"
-    },
-    "gender": {
-      "type": "string",
-      "enum": [
-        "male",
-        "female"
-      ]
-    },
-    "location": {
-      "type": "object",
-      "title": "Location",
-      "properties": {
-        "city": {
-          "type": "string",
-          "default": "San Francisco"
-        },
-        "state": {
-          "type": "string",
-          "default": "CA"
-        },
-        "citystate": {
-          "type": "string",
-          "description": "This is generated automatically from the previous two fields",
-          "template": "{{city}}, {{state}}",
-          "watch": {
-            "city": "location.city",
-            "state": "location.state"
-          }
-        }
-      }
-    },
-    "pets": {
-      "type": "array",
-      "format": "table",
-      "title": "Pets",
-      "uniqueItems": true,
-      "items": {
-        "type": "object",
-        "title": "Pet",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "cat",
-              "dog",
-              "bird",
-              "reptile",
-              "other"
-            ],
-            "default": "dog"
-          },
-          "name": {
-            "type": "string"
-          }
-        }
-      },
-      "default": [
-        {
-          "type": "dog",
-          "name": "Walter"
-        }
-      ]
-    }
-  }
-}),                
+                    json:Fields.json("Json", {
+          type: "object",
+          title: "Big Automobile",
+          properties: {
+            make: {
+              type: "string",
+              enum: [
+                "Toyota",
+                "BMW",
+                "Honda",
+                "Ford",
+                "Chevy",
+                "VW"
+              ]
+            },
+            model: {
+              type: "string"
+            },
+            year: {
+              type: "integer",
+              enum: [
+                1995,1996,1997,1998,1999,
+                2000,2001,2002,2003,2004,
+                2005,2006,2007,2008,2009,
+                2010,2011,2012,2013,2014
+              ],
+              default: 2008
+            }
+          }     
+      }),                
                     ownerOnly: Fields.text("Foo and Bar").permissions({
                         read: ['owner']
                     })
