@@ -7,6 +7,11 @@ A.app({
         aadGroup2RoleMapping: [ {group: "Company Administrator", role: "admin"}, {group: "allcountmanagers", role: "manager"}],
         isDefaultLoginMethod: true
     },
+    azureEventHubsPublish: {
+        connectionString:'Endpoint=sb://pkallcounttester.servicebus.windows.net/;SharedAccessKeyName=sender;SharedAccessKey=Cse3ExAge3Pb0YJoyxTph7NFs5vDCrTqSyGn3ugwqn8=;EntityPath=pkallcounttester',
+        path:'pkallcounttester'
+        
+    },
     forceLocale: 'en',
     menuItems: [
         {
