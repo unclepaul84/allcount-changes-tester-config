@@ -22,7 +22,9 @@ A.app({
                     bar: Fields.text("Bar").permissions({
                         write: ['manager']
                     }),
-                    
+                        ownerOnly: Fields.text("Foo and Bar").permissions({
+                        read: ['owner']
+                    }),
                     
                     json:Fields.json("Json",{
   "title": "Person",
@@ -109,10 +111,8 @@ A.app({
       ]
     }
   }
-}),                
-                    ownerOnly: Fields.text("Foo and Bar").permissions({
-                        read: ['owner']
-                    })
+})               
+                
                 }
             },
             CreateOnly: {
