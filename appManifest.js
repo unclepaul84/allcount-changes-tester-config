@@ -165,7 +165,7 @@ A.app({
           barReference: Fields.reference("Reference", "AllFiledsParent"),
           barMultiReference: Fields.multiReference("Multi Reference", "AllFiledsParent"),
           money: Fields.money("Money"),
-          integer: Fields.integer("Integer").unique(),
+          integer: Fields.integer("Integer"),
           checkbox: Fields.checkbox("Checkbox"),
           checkboxArrayField: Fields.checkbox("Checkbox1", 'checkboxArray'),
           checkboxArrayField2: Fields.checkbox("Checkbox2", 'checkboxArray'),
@@ -188,7 +188,7 @@ A.app({
       AllFiledsParent: {
         fields: {
           name: Fields.text("Name"),
-          myAllFileds: Fields.relation('My All Fields', 'AllFiledsView', 'barReference'),
+          myAllFileds: Fields.relation('My All Fields', 'AllFileds', 'barReference'),
           totalMoney: Fields.integer('total Money').computed('sum(myAllFileds.integer)')
         },
         referenceName: "name"
