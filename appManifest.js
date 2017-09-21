@@ -44,8 +44,8 @@ A.app({
         entityTypeId: "AllFiledsView"
 
       }
-      
-    ]
+
+      ]
 
     }
 
@@ -174,7 +174,55 @@ A.app({
           attachment: Fields.attachment("Attachment"),
           link: Fields.link("Link"),
           email: Fields.email("Email"),
-          radio: Fields.radio("Radio", ["Option 1", "Option 2", "Option 3"])
+          radio: Fields.radio("Radio", ["Option 1", "Option 2", "Option 3"]),
+          customerModel: Fields.json("Customer Model", {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "additionalProperties": true,
+            "title": "Customer Model",
+            "definitions": {},
+            "type": "object",
+            "id": "https://ftoptions.com/schemas",
+            "defaultProperties": [
+              "TheoModel",
+              "CurrMarkStyle",
+              "PrevMarkStyle",
+              "RiskMatrixEnableSurfaceVols"
+            ],
+            "properties": {
+              "TheoModel": {
+                "type": "string",
+                "id": "/properties/TheoModel",
+                "title": "Theo Model",
+                "default": "MH",
+                "format": "text",
+                "description": "Which Model to use"
+              },
+              "CurrMarkStyle": {
+                "type": "string",
+                "id": "/properties/CurrMarkStyle",
+                "title": "CurrMarkStyle",
+                "default": "MarkToMid",
+                "format": "text",
+                "description": "Mark method to use for current PNL"
+              },
+              "PrevMarkStyle": {
+                "type": "string",
+                "id": "/properties/PrevMarkStyle",
+                "title": "PrevMarkStyle",
+                "default": "OpeningPosition",
+                "format": "text",
+                "description": "Mark method to use for prev PNL"
+              },
+              "RiskMatrixEnableSurfaceVols": {
+                "type": "boolean",
+                "id": "/properties/RiskMatrixEnableSurfaceVols",
+                "title": "RiskMatrixEnableSurfaceVols",
+                "format": "checkbox",
+                "default": true,
+                "description": "Enable surface vols in risk matrix"
+              }
+            }
+          })
         },
         views: {
           AllFiledsView: {
@@ -189,7 +237,6 @@ A.app({
         fields: {
           name: Fields.text("Name"),
           myAllFileds: Fields.relation('My All Fields', 'AllFileds', 'barReference'),
-          totalMoney: Fields.integer('total Money').computed('sum(myAllFileds.integer)')
         },
         referenceName: "name"
       }
