@@ -175,6 +175,12 @@ A.app({
           link: Fields.link("Link"),
           email: Fields.email("Email"),
           radio: Fields.radio("Radio", ["Option 1", "Option 2", "Option 3"]),
+          customerModel: Fields.json("Customer Model", { 
+           
+            $ref:"/jsonschemas/car.json"
+
+          }),
+
           customerModel: Fields.json("Customer Model", {
             "$schema": "http://json-schema.org/draft-04/schema#",
             "additionalProperties": true,
