@@ -156,7 +156,7 @@ A.app({
           date: Fields.date("Date"),
           barReference: Fields.reference("Reference", "AllFiledsParent"),
           barMultiReference: Fields.multiReference("Multi Reference", "AllFiledsParent"),
-          money: Fields.money("Money"),
+          money: Fields.money("Money").addToTotalRow(),
           integer: Fields.integer("Integer").unique(),
           checkbox: Fields.checkbox("Checkbox"),
           checkboxArrayField: Fields.checkbox("Checkbox1", 'checkboxArray'),
@@ -167,6 +167,14 @@ A.app({
           link: Fields.link("Link"),
           email: Fields.email("Email"),
           radio: Fields.radio("Radio", ["Option 1", "Option 2", "Option 3"])
+        },
+        views: {
+          AllFiledsView: {
+            title: 'AllFiledsView Limited',
+            showInGrid: ['text', 'integer'],
+            filtering: { integer: { $gt: 100 } },
+            sorting: [['integer', -1]]
+          }
         }
       },
       AllFiledsParent: {
