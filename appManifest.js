@@ -175,7 +175,7 @@ A.app({
           link: Fields.link("Link"),
           email: Fields.email("Email"),
           radio: Fields.radio("Radio", ["Option 1", "Option 2", "Option 3"]),
-          customerModel: Fields.json("Customer Model", { 
+          customerModel: Fields.json("Car", { 
            
             $ref:"/jsonschemas/car.json"
 
