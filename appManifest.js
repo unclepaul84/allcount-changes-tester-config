@@ -1,5 +1,5 @@
 A.app({
-  appName: "FT Backoffice",
+  appName: "AllCount Feature Demo",
   appIcon: "line-chart",
   onlyAuthenticated: true,
 
