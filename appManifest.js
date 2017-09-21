@@ -1,4 +1,6 @@
 A.app({
+    appName: "Feature Demo App",
+    appIcon: "line-chart",
     adal: {
         tenant: "paulkotlyarhotmail.onmicrosoft.com",  
         appId: "a0cad9b7-ac41-4470-9df3-494aea3f327d",
