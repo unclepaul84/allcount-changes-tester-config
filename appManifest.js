@@ -1,5 +1,5 @@
 A.app({
-  appName: "Feature Demo App",
+  appName: "FT Backoffice",
   appIcon: "line-chart",
 
   adal: {
