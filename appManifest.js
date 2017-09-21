@@ -122,7 +122,7 @@ A.app({
                 },
                 afterUpdate: function(NewEntity, OldEntity, AzureEventHubPublisher){
                 
-                    AzureEventHubPublisher.Publish(OldEntity);
+                    AzureEventHubPublisher.publish(OldEntity);
                 
                 
                 }
