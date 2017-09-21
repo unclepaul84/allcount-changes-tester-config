@@ -119,7 +119,15 @@ A.app({
   }
 })               
                 
+                },
+                afterUpdate: function(NewEntity, OldEntity, AzureEventHubPublisher){
+                
+                    AzureEventHubPublisher.Publish(OldEntity);
+                
+                
                 }
+                
+                
             },
             CreateOnly: {
                 fields: {
