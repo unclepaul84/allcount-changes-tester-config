@@ -1,6 +1,7 @@
 A.app({
   appName: "FT Backoffice",
   appIcon: "line-chart",
+  onlyAuthenticated: true,
 
   adal: {
     tenant: "paulkotlyarhotmail.onmicrosoft.com",
@@ -20,7 +21,26 @@ A.app({
     {
       name: "Foo 2",
       entityTypeId: "Foo"
+    },
+    {
+      name: "Misc",
+      icon: "list",
+      children: [{
+        name: "AllFileds",
+        icon: "table",
+        entityTypeId: "AllFileds"
+
+
+      },
+      {
+        name: "AllFiledsParent",
+        icon: "table",
+        entityTypeId: "AllFiledsParent"
+
+      }]
+
     }
+
   ],
   roles: ['owner', 'manager'],
   entities: function (Fields) {
@@ -128,15 +148,33 @@ A.app({
           AzureEventHubPublisher.publish(OldEntity);
         }
       },
-      CreateOnly: {
+
+      AllFileds: {
         fields: {
-          foo: Fields.text("Foo"),
-          bar: Fields.text("Bar")
-        },
-        permissions: {
-          read: ['manager'],
-          create: null
+          text: Fields.text("Text"),
+          text: Fields.textArea("TextArea"),
+          date: Fields.date("Date"),
+          barReference: Fields.reference("Reference", "AllFiledsParent"),
+          barMultiReference: Fields.multiReference("Multi Reference", "AllFiledsParent"),
+          money: Fields.money("Money"),
+          integer: Fields.integer("Integer"),
+          checkbox: Fields.checkbox("Checkbox"),
+          checkboxArrayField: Fields.checkbox("Checkbox1", 'checkboxArray'),
+          checkboxArrayField2: Fields.checkbox("Checkbox2", 'checkboxArray'),
+          password: Fields.password("Password"),
+
+          attachment: Fields.password("Attachment"),
+          link: Fields.link("Link"),
+          email: Fields.email("Email"),
+          radio: Fields.radio("Radio", ["Option 1", "Option 2", "Option 3"])
         }
+      },
+      AllFiledsParent: {
+        fields: {
+          name: Fields.text("Name"),
+          myAllFileds: Fields.relation('My All Fields', 'AllFileds', 'barReference')
+        },
+        referenceName: "name"
       }
     }
   }
