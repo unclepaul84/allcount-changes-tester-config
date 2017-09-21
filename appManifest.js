@@ -164,7 +164,7 @@ A.app({
           date: Fields.date("Date"),
           barReference: Fields.reference("Reference", "AllFiledsParent"),
           barMultiReference: Fields.multiReference("Multi Reference", "AllFiledsParent"),
-          money: Fields.money("Money").addToTotalRow(),
+          money: Fields.money("Money"),
           integer: Fields.integer("Integer").unique(),
           checkbox: Fields.checkbox("Checkbox"),
           checkboxArrayField: Fields.checkbox("Checkbox1", 'checkboxArray'),
