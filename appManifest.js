@@ -195,7 +195,11 @@ A.app({
                 "title": "Theo Model",
                 "default": "MH",
                 "format": "text",
-                "description": "Which Model to use"
+                "description": "Which Model to use",
+                "enum": [
+                  "MH",
+                  "FT",
+                ]
               },
               "CurrMarkStyle": {
                 "type": "string",
@@ -203,7 +207,14 @@ A.app({
                 "title": "CurrMarkStyle",
                 "default": "MarkToMid",
                 "format": "text",
-                "description": "Mark method to use for current PNL"
+                "description": "Mark method to use for current PNL",
+                "enum": [
+                  "MarkToMid",
+                  "MarkToLast",
+                  "MarkToTheo",
+                  "MarkToFTSmartMark"
+
+                ]
               },
               "PrevMarkStyle": {
                 "type": "string",
@@ -211,7 +222,14 @@ A.app({
                 "title": "PrevMarkStyle",
                 "default": "OpeningPosition",
                 "format": "text",
-                "description": "Mark method to use for prev PNL"
+                "description": "Mark method to use for prev PNL",
+                "enum": [
+                  "MarkToMid",
+                  "MarkToLast",
+                  "MarkToTheo",
+                  "MarkToFTSmartMark"
+
+                ]
               },
               "RiskMatrixEnableSurfaceVols": {
                 "type": "boolean",
