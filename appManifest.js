@@ -157,13 +157,13 @@ A.app({
           barReference: Fields.reference("Reference", "AllFiledsParent"),
           barMultiReference: Fields.multiReference("Multi Reference", "AllFiledsParent"),
           money: Fields.money("Money"),
-          integer: Fields.integer("Integer"),
+          integer: Fields.integer("Integer").unique(),
           checkbox: Fields.checkbox("Checkbox"),
           checkboxArrayField: Fields.checkbox("Checkbox1", 'checkboxArray'),
           checkboxArrayField2: Fields.checkbox("Checkbox2", 'checkboxArray'),
           password: Fields.password("Password"),
 
-          attachment: Fields.password("Attachment"),
+          attachment: Fields.attachment("Attachment"),
           link: Fields.link("Link"),
           email: Fields.email("Email"),
           radio: Fields.radio("Radio", ["Option 1", "Option 2", "Option 3"])
