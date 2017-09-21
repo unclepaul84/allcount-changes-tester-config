@@ -188,7 +188,7 @@ A.app({
       AllFiledsParent: {
         fields: {
           name: Fields.text("Name"),
-          myAllFileds: Fields.relation('My All Fields', 'AllFileds', 'barReference'),
+          myAllFileds: Fields.relation('My All Fields', 'AllFiledsView', 'barReference'),
           totalMoney: Fields.integer('total Money').computed('sum(myAllFileds.integer)')
         },
         referenceName: "name"
