@@ -37,7 +37,15 @@ A.app({
         icon: "table",
         entityTypeId: "AllFiledsParent"
 
-      }]
+      },
+      {
+        name: "AllFiledsView",
+        icon: "table",
+        entityTypeId: "AllFiledsView"
+
+      }
+      
+    ]
 
     }
 
