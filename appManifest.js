@@ -152,7 +152,7 @@ A.app({
       AllFileds: {
         fields: {
           text: Fields.text("Text"),
-          text: Fields.textarea("TextArea"),
+          textArea: Fields.textarea("TextArea"),
           date: Fields.date("Date"),
           barReference: Fields.reference("Reference", "AllFiledsParent"),
           barMultiReference: Fields.multiReference("Multi Reference", "AllFiledsParent"),
