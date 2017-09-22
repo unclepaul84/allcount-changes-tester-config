@@ -263,10 +263,10 @@ A.app({
             id: 'proceed',
             name: "SetCheckboxFalse",
             perform: function (Crud, User, Actions, Security) {
-              
+
               var crud = Crud.actionContextCrud();
               return crud.readEntity(Actions.selectedEntityId()).then(function (entity) {
-                entity.checkbox = true;
+                entity.checkbox = false;
                 return crud.updateEntity(entity);
               }).then(function () {
                 return Actions.refreshResult();
