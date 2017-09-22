@@ -5,18 +5,14 @@ block vars
   - var hasToolbar = false
 block content
   div
-     .container.screen-container(ng-app='allcount',ng-controller="PosController")
-        .col-md-8
-            .panel.panel-default
-                .panel-heading  AllFiledsView
-                    .panel-body
-                        div(lc-grid="'AllFiledsView'", edit-mode="false" , paging="{}")     
-        .col-md-8
-            .panel.panel-default
-                .panel-heading  AllFiledsView 2
-                    .panel-body
-                         div(lc-grid="'AllFiledsView'", edit-mode="false" , paging="{}")  
-   
+     .container.screen-container.container-fluid(ng-app='allcount',ng-controller="PosController")
+        div.row
+            div.col-md-8
+                div.panel.panel-default
+                    .panel-heading  AllFiledsView
+                        .panel-body
+                            div(lc-grid="'AllFiledsView'", edit-mode="false" , paging="{}")     
+             
      
 block js
   +entityJs()
