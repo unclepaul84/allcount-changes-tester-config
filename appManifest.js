@@ -263,7 +263,7 @@ A.app({
             perform: function (Crud, User, Actions, Security) {
                 console.warn("action!");
             },
-            actionTarget: 'single-item'
+            actionTarget: 'all-items'
           }
         ]
       },
