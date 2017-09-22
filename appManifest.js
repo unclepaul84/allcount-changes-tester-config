@@ -273,13 +273,13 @@ A.app({
               });
 
             },
-            isEnabled: function (Crud, Actions) {
+            enabled: function (Crud, Actions) {
               var crud = Crud.actionContextCrud();
               return crud.readEntity(Actions.selectedEntityId()).then(function (entity) {
                 return entity.checkbox === true;
               })
             },
-            isHidden: function (Q) { return Q(false); },
+            hidden: function (Q) { return Q(false); },
 
             actionTarget: 'single-item'
           }
