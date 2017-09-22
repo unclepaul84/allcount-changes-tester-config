@@ -269,12 +269,18 @@ A.app({
                 entity.checkbox = false;
                 return crud.updateEntity(entity);
               }).then(function () {
-                return Actions.modalResult('test','test');
+                return Actions.modalResult('test', 'test');
               });
 
             },
-       
-           
+            enabled: function (Crud) {
+
+              var crud = Crud.actionContextCrud();
+              return crud.readEntity(Actions.selectedEntityId()).then(function (entity) {
+                entity.checkbox === true;
+              });
+            },
+
 
             actionTarget: 'single-item'
           }
