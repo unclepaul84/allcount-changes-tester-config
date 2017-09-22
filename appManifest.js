@@ -260,9 +260,7 @@ A.app({
           {
             id: 'proceed',
             name: "SetCheckboxFalse",
-            perform: function (Crud, User, Actions, Security) {
-                console.warn("action!");
-            },
+          
             actionTarget: 'all-items'
           }
         ]
