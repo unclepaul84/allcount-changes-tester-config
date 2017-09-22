@@ -6,10 +6,19 @@ block vars
 block content
   div
      .container.screen-container(ng-app='allcount',ng-controller="PosController")
+     .row
         .col-md-8
-            div(lc-grid="'AllFiledsView'", edit-mode="false" , paging="{}")     
+            .panel.panel-default
+                .panel-heading  AllFiledsView
+                    .panel-body
+                         div(lc-grid="'AllFiledsView'", edit-mode="false" , paging="{}")     
         .col-md-8
-            div(lc-grid="'AllFiledsView'", edit-mode="false" , paging="{}")    
+            .panel.panel-default
+                .panel-heading  AllFiledsView 2
+                    .panel-body
+                         div(lc-grid="'AllFiledsView'", edit-mode="false" , paging="{}")  
+   
+     
 block js
   +entityJs()
   script.
