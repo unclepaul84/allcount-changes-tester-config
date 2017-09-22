@@ -253,8 +253,23 @@ A.app({
             title: 'AllFiledsView Limited',
             showInGrid: ['text', 'integer'],
             filtering: { integer: { $gt: 100 } },
-            sorting: [['integer', -1]]
-
+            sorting: [['integer', -1]],
+            actions: [
+              {
+                id: 'DeleteAll',
+                name: "DeleteAll",
+                perform: function (Crud, User, Actions, Security) {
+    
+              
+                    return Actions.modalResult('test', 'test');
+                  
+    
+                },
+    
+    
+                actionTarget: 'all-items'
+              }
+            ]
           }
 
         },
