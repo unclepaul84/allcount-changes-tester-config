@@ -28,8 +28,9 @@ block js
        console.warn('hello from', item);
       };
        $scope.navigateAllFileds = function(entityId)
-       {    console.warn('navigateAllFileds', entityId);
-            window.href='/entity/AllFileds/' + entityId;
+       {    
+           console.warn('navigateAllFileds', entityId);
+            window.location.href='/entity/AllFileds/' + entityId;
        };
     }])
   style.
