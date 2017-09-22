@@ -1,3 +1,31 @@
 extends main
-block content
+include mixins
 
+block vars
+  - var hasToolbar = false
+block content
+  div(ng-app='allcount', ng-controller='EntityViewController')
+     +defaultList()
+     .container.screen-container(ng-cloak)
+       .row(ng-controller="AllFiledsController")
+         .col-md-8
+           .items-bar.row.btn-toolbar(lc-list="'AllFileds'", paging="{}")
+             .col-lg-4.col-md-6.col-xs-12(ng-repeat="item in items")
+               button.btn.btn-lg.btn-block.btn-default
+                 p {{item.text}}
+              
+       
+
+block js
+  +entityJs()
+  script.
+    angular.module('allcount').controller('AllFiledsController', ['$scope', 'lcApi', '$q', function ($scope, lcApi, $q) {
+      $scope.addItem = function (item) {
+     
+       alert('hello from ' + JSON.stringify(item) )
+      }
+    }])
+  style.
+    .items-bar .btn-block {
+      margin-bottom: 10px;
+    }
