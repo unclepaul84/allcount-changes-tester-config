@@ -9,7 +9,7 @@ block content
      .container.screen-container
        .row(ng-app='allcount',ng-controller="PosController")
          .col-md-8
-           .items-bar.row.btn-toolbar(lc-list="'AllFileds'", paging="{}")
+           .items-bar.row.btn-toolbar(lc-list="'AllFiledsView'", paging="{}")
              .col-lg-4.col-md-6.col-xs-12(ng-repeat="item in items")
                button.btn.btn-lg.btn-block.btn-default(ng-click="addItem(item)")
                  p {{item.text}}
