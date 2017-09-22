@@ -11,12 +11,12 @@ block content
                 div.panel.panel-default
                     .panel-heading  AllFiledsView
                         .panel-body
-                            div(lc-grid="'AllFiledsView'", edit-mode="false", navigate="true" , paging="{}")     
+                            div(lc-grid="'AllFiledsView'", edit-mode="false", navigate="navigateAllFileds" , paging="{}")     
             div.col-md-4
                 div.panel.panel-default
                     .panel-heading  AllFiledsView 2
                         .panel-body
-                            div(lc-grid="'AllFiledsView'", edit-mode="false" , navigate="true",  paging="{}")     
+                            div(lc-grid="'AllFiledsView'", edit-mode="false" , navigate="navigateAllFileds",  paging="{}")     
    
      
 block js
@@ -27,9 +27,9 @@ block js
        
        console.warn('hello from', item);
       };
-       $scope.navigate = function()
+       $scope.navigateAllFileds = function(id)
        {
-            console.warn('navigate', id);
+            window.href='/entity/AllFileds/' + id;
        };
     }])
   style.
