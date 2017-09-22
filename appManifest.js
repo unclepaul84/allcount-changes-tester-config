@@ -269,7 +269,7 @@ A.app({
                 entity.checkbox = false;
                 return crud.updateEntity(entity);
               }).then(function () {
-                return Actions.refreshResult();
+                return Actions.refreshResult('test','test');
               });
 
             },
