@@ -6,13 +6,13 @@ block vars
 block content
   div
      +defaultList()
-     .container.screen-container
-       .row(ng-app='allcount',ng-controller="PosController")
-         .col-md-8
-           .items-bar.row.btn-toolbar(lc-list="'AllFiledsView'", paging="{}")
-             .col-lg-4.col-md-6.col-xs-12(ng-repeat="item in items")
-               button.btn.btn-lg.btn-block.btn-default(ng-click="addItem(item)")
-                 p {{item.text}}
+     .container.screen-container(ng-app='allcount',ng-controller="PosController")
+       .left-animation-screen(lc-list="'AllFiledsView'", paging="{}",  edit-mode='false')
+       .row
+            .col-xs-3(ng-repeat="item in items")
+                .panel.panel-default               
+                    .panel-body
+                          div(ng-repeat="fd in fieldDescriptions", lc-field="fd",ng-model="item[fd.field]", is-editor="false")
                
 block js
   +entityJs()
