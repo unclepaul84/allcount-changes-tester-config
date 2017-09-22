@@ -15,7 +15,7 @@ block content
                button.btn.btn-lg.btn-block.btn-default(ng-click="addItem(item)")
                    div(ng-repeat="fd in fieldDescriptions", lc-field="fd",ng-model="item[fd.field]", is-editor="false")
 
-    div(lc-grid="'AllFiledsView'", edit-mode="false" )
+    div(lc-grid="'AllFiledsView'", edit-mode="false" , paging="{}")
           
 block js
   +entityJs()
