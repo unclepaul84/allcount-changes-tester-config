@@ -273,7 +273,7 @@ A.app({
               });
 
             },
-            enabled: function (Crud) {
+            enabled: function (Crud,Actions) {
 
               var crud = Crud.actionContextCrud();
               return crud.readEntity(Actions.selectedEntityId()).then(function (entity) {
