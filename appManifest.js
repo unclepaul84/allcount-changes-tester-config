@@ -279,7 +279,7 @@ A.app({
                 return entity.checkbox === true;
               })
             },
-            hidden: function (Q) { return Q(false); },
+           
 
             actionTarget: 'single-item'
           }
