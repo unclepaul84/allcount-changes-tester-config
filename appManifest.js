@@ -253,19 +253,20 @@ A.app({
             title: 'AllFiledsView Limited',
             showInGrid: ['text', 'integer'],
             filtering: { integer: { $gt: 100 } },
-            sorting: [['integer', -1]],
-            actions: [
-              {
-                id: 'proceed',
-                name: "SetCheckboxFalse",
-                perform: function (Crud, User, Actions, Security) {
-                    console.warn("action!");
-                },
-                actionTarget: 'single-item'
-              }
-            ]
+            sorting: [['integer', -1]]
+           
+        },
+        actions: [
+          {
+            id: 'proceed',
+            name: "SetCheckboxFalse",
+            perform: function (Crud, User, Actions, Security) {
+                console.warn("action!");
+            },
+            actionTarget: 'single-item'
           }
-        }
+        ]
+      }
        
       },
       AllFiledsParent: {
