@@ -175,9 +175,9 @@ A.app({
           link: Fields.link("Link"),
           email: Fields.email("Email"),
           radio: Fields.radio("Radio", ["Option 1", "Option 2", "Option 3"]),
-          car: Fields.json("Car", { 
-           
-            $ref:"/jsonschemas/car.json"
+          car: Fields.json("Car", {
+
+            $ref: "/jsonschemas/car.json"
 
           }),
 
@@ -255,7 +255,33 @@ A.app({
             filtering: { integer: { $gt: 100 } },
             sorting: [['integer', -1]]
           }
-        }
+        },
+        actions: [
+          {
+            id: 'proceed',
+            name: "SetCheckboxFalse",
+            enabled: function (User, Crud) {
+
+              var crud = Crud.actionContextCrud();
+              return crud.readEntity(Actions.selectedEntityId()).then(function (entity) {
+
+                return entity.checkbox == true;
+              })
+
+            },
+            perform: function (Crud, User, Actions, Security) {
+
+              var crud = Crud.actionContextCrud();
+              return crud.readEntity(Actions.selectedEntityId()).then(function (entity) {
+                entity.checkbox = true;
+                return crud.updateEntity(entity);
+              }).then(function () {
+                return Actions.refreshResult();
+              });
+            },
+            actionTarget: 'single-item'
+          }
+        ]
       },
       AllFiledsParent: {
         fields: {
