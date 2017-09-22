@@ -261,7 +261,7 @@ A.app({
                 perform: function (Crud, User, Actions, Security) {
                     console.warn("action!");
                 },
-                actionTarget: 'all-items'
+                actionTarget: 'single-item'
               }
             ]
           }
