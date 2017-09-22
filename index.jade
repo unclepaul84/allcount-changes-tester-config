@@ -7,22 +7,27 @@ block content
   div(ng-app='allcount', ng-controller='EntityViewController')
      +defaultList()
      .container.screen-container(ng-cloak)
-       .row(ng-controller="AllFiledsController")
+       .row(ng-controller="PosController")
          .col-md-8
            .items-bar.row.btn-toolbar(lc-list="'AllFileds'", paging="{}")
              .col-lg-4.col-md-6.col-xs-12(ng-repeat="item in items")
-               button.btn.btn-lg.btn-block.btn-default
+               button.btn.btn-lg.btn-block.btn-default(ng-click="addItem(item)")
                  p {{item.text}}
-              
-       
+               
+           .container-fluid
+          
+
+         .col-md-4     
+           +defaultEditForm()(ng-show="true")
+             +defaultFormTemplate()
 
 block js
   +entityJs()
   script.
-    angular.module('allcount').controller('AllFiledsController', ['$scope', 'lcApi', '$q', function ($scope, lcApi, $q) {
+    angular.module('allcount').controller('PosController', ['$scope', 'lcApi', '$q', function ($scope, lcApi, $q) {
       $scope.addItem = function (item) {
-     
-       alert('hello from ' + JSON.stringify(item) )
+       
+       console.warn('hello from', item);
       }
     }])
   style.
