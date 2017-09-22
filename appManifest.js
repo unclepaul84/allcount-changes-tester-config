@@ -273,12 +273,7 @@ A.app({
               });
 
             },
-            enabled: function (Crud, Actions) {
-              var crud = Crud.actionContextCrud();
-              return crud.readEntity(Actions.selectedEntityId()).then(function (entity) {
-                return entity.checkbox === true;
-              })
-            },
+       
            
 
             actionTarget: 'single-item'
