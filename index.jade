@@ -4,7 +4,7 @@ include mixins
 block vars
   - var hasToolbar = false
 block content
-  div(ng-app='allcount', ng-controller='EntityViewController')
+  div
      +defaultList()
      .container.screen-container(ng-cloak)
        .row(ng-controller="PosController")
