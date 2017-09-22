@@ -7,16 +7,16 @@ block content
   div
      .container.screen-container.container-fluid(ng-app='allcount',ng-controller="PosController")
         div.row
-            div.col-sm-4
+            div.col-md-4
                 div.panel.panel-default
                     .panel-heading  AllFiledsView
                         .panel-body
-                            div(lc-grid="'AllFileds'", edit-mode="false" , paging="{}")     
-            div.col-sm-4
+                            div(lc-grid="'AllFiledsView'", edit-mode="true" , paging="{}")     
+            div.col-md-4
                 div.panel.panel-default
                     .panel-heading  AllFiledsView 2
                         .panel-body
-                            div(lc-grid="'AllFiledsView'", edit-mode="false" , paging="{}")     
+                            div(lc-grid="'AllFiledsView'", edit-mode="true" , paging="{}")     
    
      
 block js
