@@ -27,10 +27,10 @@ block js
        
        console.warn('hello from', item);
       };
-       $scope.navigate(id)
+       $scope.navigate = function()
        {
             console.warn('navigate', id);
-       }
+       };
     }])
   style.
     .items-bar .btn-block {
