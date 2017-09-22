@@ -276,7 +276,7 @@ A.app({
             isEnabled: function (Crud, Actions) {
               var crud = Crud.actionContextCrud();
               return crud.readEntity(Actions.selectedEntityId()).then(function (entity) {
-                entity.checkbox == true;
+                return entity.checkbox === true;
               })
             },
             isHidden: function (Q) { },
