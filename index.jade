@@ -6,9 +6,9 @@ block vars
 block content
   div
      +defaultList()
-     .container.screen-container(ng-app='allcount',ng-controller="PosController")
-       .left-animation-screen(lc-list="'AllFiledsView'", paging="{}",  edit-mode='false')
-       .row
+     div(ng-app='allcount',ng-controller="PosController")
+     .container.screen-container()
+       .row(lc-list="'AllFiledsView'", paging="{}",  edit-mode='false')
             .col-xs-3(ng-repeat="item in items")
                 .panel.panel-default               
                     .panel-body
