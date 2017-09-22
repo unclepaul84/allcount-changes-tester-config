@@ -263,8 +263,24 @@ A.app({
             id: 'proceed',
             name: "SetCheckboxFalse",
             perform: function (Crud, User, Actions, Security) {
-              console.warn("action!");
+              
+              var crud = Crud.actionContextCrud();
+              return crud.readEntity(Actions.selectedEntityId()).then(function (entity) {
+                entity.checkbox = true;
+                return crud.updateEntity(entity);
+              }).then(function () {
+                return Actions.refreshResult();
+              });
+
             },
+            isEnabled: function (Crud, Actions) {
+              var crud = Crud.actionContextCrud();
+              return crud.readEntity(Actions.selectedEntityId()).then(function (entity) {
+                entity.checkbox == true;
+              })
+            },
+            isHidden: function (Q) { },
+
             actionTarget: 'single-item'
           }
         ]
