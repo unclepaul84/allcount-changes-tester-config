@@ -153,7 +153,10 @@ A.app({
         },
         afterUpdate: function (NewEntity, OldEntity, AzureEventHubPublisher) {
 
-          AzureEventHubPublisher.publish(OldEntity);
+          if(NewEntity)
+             AzureEventHubPublisher.publish(NewEntity);
+          else
+             AzureEventHubPublisher.publish(OldEntity);
         }
       },
 
