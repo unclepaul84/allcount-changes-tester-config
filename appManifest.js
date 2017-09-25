@@ -13,8 +13,8 @@ A.app({
   },
   azureEventHubsPublish: {
     connectionString: 'Endpoint=sb://pkallcounttester.servicebus.windows.net/;SharedAccessKeyName=sender;SharedAccessKey=Cse3ExAge3Pb0YJoyxTph7NFs5vDCrTqSyGn3ugwqn8=;EntityPath=pkallcounttester',
-    path: 'pkallcounttester'
-
+    path: 'pkallcounttester',
+    autoPublishCrudActions: true,
   },
   forceLocale: 'en',
   menuItems: [
@@ -259,14 +259,14 @@ A.app({
                 id: 'DeleteAll',
                 name: "DeleteAll",
                 perform: function (Crud, User, Actions, Security) {
-    
-              
-                    return Actions.modalResult('test', 'test');
-                  
-    
+
+
+                  return Actions.modalResult('test', 'test');
+
+
                 },
-    
-    
+
+
                 actionTarget: 'all-items'
               }
             ]
@@ -288,7 +288,7 @@ A.app({
               });
 
             },
-            enabled: function (Crud,Actions) {
+            enabled: function (Crud, Actions) {
 
               var crud = Crud.actionContextCrud();
               return crud.readEntity(Actions.selectedEntityId()).then(function (entity) {
