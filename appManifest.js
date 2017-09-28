@@ -311,19 +311,6 @@ A.app({
           myAllFileds: Fields.relation('My All Fields', 'AllFileds', 'barReference'),
         },
         referenceName: "name"
-      },
-      User: {
-        actions: [
-          {
-            id: 'getAccessToken',
-            name: "Get Access Token",
-            perform: function (Crud, User, Actions, Security) {
-
-              return  Actions.modalResult('API Key',Security.generateToken(User));
-            },
-            actionTarget: 'single-item'
-          }
-        ]
       }
     }
   }
