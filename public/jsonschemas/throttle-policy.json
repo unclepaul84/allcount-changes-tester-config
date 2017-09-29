@@ -98,6 +98,19 @@
                 "perDay": 1500,
                 "perWeek": 3000
             }]
+        },
+        "WhiteListedKeys": {
+            "type": "array",
+            "id": "/properties/WhiteListedKeys",
+            "format": "table",
+            "title":"API Key Whitelist",
+            "description": "API keys not subject to Throttling Rules or this policy",
+            "items": {
+                "type": "string",
+                "id": "/properties/WhiteListedKeys/items",
+                "title": "API Key",
+                "format": "text"
+            }
         }
     }
 }

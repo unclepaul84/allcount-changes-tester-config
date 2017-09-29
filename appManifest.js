@@ -219,6 +219,7 @@ A.app({
           keyName: Fields.text("Key Name").required(),
           apis: Fields.multiReference("API Assignments", "ApiDefinition"),
           key: Fields.text("API Key").readOnly(),
+          apiPolicy: Fields.reference("Policy Override", "ApiThrottlePolicy").required(),
           isActive: Fields.checkbox("Is Active"),
           notes: Fields.textarea("Notes")
           /* TODO: add json field with policy */
