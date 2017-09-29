@@ -20,10 +20,28 @@ A.app({
   },
   forceLocale: 'en',
   menuItems: [
+
     {
-      name: "Api Keys",
-      entityTypeId: "ApiKey"
+      name: "API",
+      icon: "list",
+      children: [{
+        name: "Api Keys",
+        entityTypeId: "ApiKey"
+      },
+      {
+        name: "Throttle Policies",
+        entityTypeId: "ApiThrottlePolicy"
+      },
+
+      {
+        name: "Throttle Policy Assignments",
+        entityTypeId: "ApiThrottlePolicyAssignment"
+      },
+      ]
     },
+
+
+    ,
     {
       name: "Foo 2",
       entityTypeId: "Foo"
@@ -166,21 +184,32 @@ A.app({
         }
       },
 
-/*
+
       ApiThrottlePolicy:
       {
-
+        fields: {
+          policyName: Fields.text("Policy Name").required(),
+          notes: Fields.textarea("Notes")
+          /* TODO: add json field with policy */
+        }
       },
-       
-      ApiThrottlePolicyAssignment :{
 
+      ApiThrottlePolicyAssignment: {
 
-      },*/
+        fields: {
+          apiName: Fields.text("API Name").required(),
+          apiPolicy: Fields.reference("Policy", "ApiThrottlePolicy"),
+          notes: Fields.textarea("Notes")
+        }
+      },
 
       ApiKey: {
         fields: {
           key: Fields.text("API Key").readOnly(),
+          isActive: Fields.checkbox("Is Active"),
           notes: Fields.textarea("Notes")
+          /* TODO: add json field with policy */
+          /* TODO: maybe add expiration date */
         },
         beforeCreate: function (Entity, Q, UUID) {
 
