@@ -26,15 +26,15 @@ A.app({
       icon: "list",
       children: [
         {
-          name: "Api Definitions",
+          name: "API Definitions",
           entityTypeId: "ApiDefinition"
         }, 
         {
-          name: "Api Keys",
+          name: "API Keys",
           entityTypeId: "ApiKey"
         },
         {
-          name: "Throttle Policies",
+          name: "API Throttle Policies",
           entityTypeId: "ApiThrottlePolicy"
         }
 
@@ -186,7 +186,7 @@ A.app({
       ApiDefinition: {
         fields: {
 
-          name: Fields.text("Api Name").required(),
+          name: Fields.text("API Name").required(),
           apiPolicy: Fields.reference("Policy", "ApiThrottlePolicy").required(),
           notes: Fields.textarea("Notes")
         }
