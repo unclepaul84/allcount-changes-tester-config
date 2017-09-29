@@ -163,14 +163,10 @@ A.app({
             AzureEventHubPublisher.publish(OldEntity);
         }
       },
-
-
-
       ApiKey: {
-
         fields:
         {
-          key: Fields.text("API Key").ReadOnly(),
+          key: Fields.text("API Key"),
           notes: Fields.textarea("Notes")
 
         },
