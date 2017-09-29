@@ -202,8 +202,13 @@ A.app({
         title: "API Throttle Policy",
         fields: {
           policyName: Fields.text("Policy Name").required(),
-          notes: Fields.textarea("Notes")
-          /* TODO: add json field with policy */
+          notes: Fields.textarea("Notes"),
+          policy: Fields.json("Policy", {
+            
+                        $ref: "/jsonschemas/throttle-policy.json"
+            
+                      }).required(),
+        
         },
         referenceName: "policyName"
       },
