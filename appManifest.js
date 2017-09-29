@@ -1,5 +1,4 @@
 
-const uuidv1 = require('uuid/v1');
 
 A.app({
   appName: "AllCount Feature Demo",
