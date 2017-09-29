@@ -24,19 +24,20 @@ A.app({
     {
       name: "API",
       icon: "list",
-      children: [{
-        name: "Api Keys",
-        entityTypeId: "ApiKey"
-      },
-      {
-        name: "Throttle Policies",
-        entityTypeId: "ApiThrottlePolicy"
-      },
+      children: [
+        {
+          name: "Api Definitions",
+          entityTypeId: "ApiDefinition"
+        }, 
+        {
+          name: "Api Keys",
+          entityTypeId: "ApiKey"
+        },
+        {
+          name: "Throttle Policies",
+          entityTypeId: "ApiThrottlePolicy"
+        }
 
-      {
-        name: "Throttle Policy Assignments",
-        entityTypeId: "ApiThrottlePolicyAssignment"
-      }
       ]
     },
     {
@@ -182,8 +183,19 @@ A.app({
       },
 
 
+      ApiDefinition: {
+        fields: {
+
+          name: Fields.text("Api Name").required(),
+          apiPolicy: Fields.reference("Policy", "ApiThrottlePolicy").required(),
+          notes: Fields.textarea("Notes")
+        }
+
+      },
+
       ApiThrottlePolicy:
       {
+
         fields: {
           policyName: Fields.text("Policy Name").required(),
           notes: Fields.textarea("Notes")
@@ -191,17 +203,10 @@ A.app({
         }
       },
 
-      ApiThrottlePolicyAssignment: {
-
-        fields: {
-          apiName: Fields.text("API Name").required(),
-          apiPolicy: Fields.reference("Policy", "ApiThrottlePolicy"),
-          notes: Fields.textarea("Notes")
-        }
-      },
-
       ApiKey: {
         fields: {
+          keyName: Fields.text("API Key").required(),
+          apis: Fields.multiReference("API Assignments", "ApiDefinition"),
           key: Fields.text("API Key").readOnly(),
           isActive: Fields.checkbox("Is Active"),
           notes: Fields.textarea("Notes")
