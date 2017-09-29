@@ -1,0 +1,103 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": true,
+    "title": "Web Api Throttling Policy",
+    "definitions": {},
+    "type": "object",
+    "id": "https://niebert.github.io/json-editor",
+    "defaultProperties": [
+        "stackBlockedRequests",
+        "endpointThrottling",
+        "ipThrottling",
+        "endPointPolicies"
+    ],
+    "properties": {
+        "stackBlockedRequests": {
+            "type": "boolean",
+            "id": "/properties/stackBlockedRequests",
+            "title": "Stack Blocked Requests",
+            "format": "checkbox",
+            "default": false,
+            "description": "Controls if throttled requests count towards the limits"
+        },
+        "endpointThrottling": {
+            "type": "boolean",
+            "id": "/properties/endpointThrottling",
+            "title": "Endpoint Throttling",
+            "format": "checkbox",
+            "default": true,
+            "description": "If true allows individual /api/bla have it's own throttle limit"
+        },
+        "endPointPolicies": {
+            "type": "array",
+            "title": "EndPoint Policies",
+            "id": "/properties/endPointPolicies",
+            "format": "table",
+            "items": {
+                "type": "object",
+                "id": "/properties/endPointPolicies/items",
+                "defaultProperties": [
+                    "route",
+                    "perSecond",
+                    "perMinute",
+                    "perHour",
+                    "perDay",
+                    "perWeek"
+                ],
+                "properties": {
+                    "route": {
+                        "type": "string",
+                        "id": "/properties/endPointPolicies/items/properties/route",
+                        "title": "Route",
+                        "default": "*",
+                        "format": "text",
+                        "description": "target api route ex. /api/calculatemultiple"
+                    },
+                    "perSecond": {
+                        "type": "integer",
+                        "id": "/properties/endPointPolicies/items/properties/perSecond",
+                        "title": "Per Second",
+                        "default": 1,
+                        "description": ""
+                    },
+                    "perMinute": {
+                        "type": "integer",
+                        "id": "/properties/endPointPolicies/items/properties/perMinute",
+                        "title": "Per Minute",
+                        "default": 20,
+                        "description": ""
+                    },
+                    "perHour": {
+                        "type": "integer",
+                        "id": "/properties/endPointPolicies/items/properties/perHour",
+                        "title": "Per Hour",
+                        "default": 200,
+                        "description": ""
+                    },
+                    "perDay": {
+                        "type": "integer",
+                        "id": "/properties/endPointPolicies/items/properties/perDay",
+                        "title": "Per Day",
+                        "default": 1500,
+                        "description": ""
+                    },
+                    "perWeek": {
+                        "type": "integer",
+                        "id": "/properties/endPointPolicies/items/properties/perWeek",
+                        "title": "Per Week",
+                        "default": 3000,
+                        "description": ""
+                    }
+                }
+            },
+            "default":[ {
+                "route": "*",
+                "perSecond": 1,
+                "perMinute": 20,
+                "perHour": 200,
+                "perDay": 1500,
+                "perWeek": 3000
+            }]
+        }
+    }
+}
