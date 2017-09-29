@@ -181,13 +181,11 @@ A.app({
             AzureEventHubPublisher.publish(OldEntity);
         }
       },
-
-
       ApiDefinition: {
         title: "API Definition",
         fields: {
 
-          name: Fields.text("API Name").required(),
+          name: Fields.text("API Name").required().unique(),
           apiPolicy: Fields.reference("Policy", "ApiThrottlePolicy").required(),
           notes: Fields.textarea("Notes")
         },
@@ -196,12 +194,11 @@ A.app({
        
 
       },
-
       ApiThrottlePolicy:
       {
         title: "API Throttle Policy",
         fields: {
-          policyName: Fields.text("Policy Name").required(),
+          policyName: Fields.text("Policy Name").required().unique(),
           notes: Fields.textarea("Notes"),
           policy: Fields.json("Policy", {
             
@@ -212,17 +209,15 @@ A.app({
         },
         referenceName: "policyName"
       },
-
       ApiKey: {
         title: "API Key",
         fields: {
-          keyName: Fields.text("Key Name").required(),
+          keyName: Fields.text("Key Name").required().unique(),
           apis: Fields.multiReference("API Assignments", "ApiDefinition"),
           key: Fields.text("API Key").readOnly(),
           apiPolicy: Fields.reference("Policy Override", "ApiThrottlePolicy"),
           isActive: Fields.checkbox("Is Active"),
           notes: Fields.textarea("Notes")
-          /* TODO: add json field with policy */
           /* TODO: maybe add expiration date */
         },
         beforeCreate: function (Entity, Q, UUID) {
