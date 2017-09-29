@@ -163,6 +163,14 @@ A.app({
             AzureEventHubPublisher.publish(OldEntity);
         }
       },
+
+
+      ApiKey: {
+        fields:{
+          key: Fields.text("API Key"),
+          notes: Fields.textarea("Notes")
+        }
+      },
       
       AllFileds: {
         fields: {
