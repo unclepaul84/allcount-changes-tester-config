@@ -8,7 +8,8 @@
     "defaultProperties": [
         "stackBlockedRequests",
         "endpointThrottling",
-        "endPointPolicies"
+        "endPointPolicies",
+        "whiteListedKeys"
     ],
     "properties": {
         "stackBlockedRequests": {
@@ -27,22 +28,6 @@
             "default": true,
             "description": "If true allows individual /api/bla have it's own throttle limit"
         },
-
-
-        "WhiteListedKeys": {
-            "type": "array",
-            "id": "/properties/WhiteListedKeys",
-            "format": "table",
-            "title":"API Key Whitelist",
-            "description": "API keys not subject to Throttling Rules or this policy",
-            "items": {
-                "type": "string",
-                "id": "/properties/WhiteListedKeys/items",
-                "title": "API Key",
-                "format": "text"
-            }
-        },
-
         "endPointPolicies": {
             "type": "array",
             "title": "EndPoint Policies",
@@ -114,6 +99,20 @@
                 "perDay": 1500,
                 "perWeek": 3000
             }]
+        }
+        ,
+        "whiteListedKeys": {
+            "type": "array",
+            "id": "/properties/whiteListedKeys",
+            "format": "table",
+            "title":"API Key Whitelist",
+            "description": "API keys not subject to Throttling Rules or this policy",
+            "items": {
+                "type": "string",
+                "id": "/properties/WhiteListedKeys/items",
+                "title": "API Key",
+                "format": "text"
+            }
         }
   
     }
