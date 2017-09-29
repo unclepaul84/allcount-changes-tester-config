@@ -166,7 +166,7 @@ A.app({
         }
       },
 
-
+/*
       ApiThrottlePolicy:
       {
 
@@ -175,7 +175,7 @@ A.app({
       ApiThrottlePolicyAssignment :{
 
 
-      },
+      },*/
 
       ApiKey: {
         fields: {
