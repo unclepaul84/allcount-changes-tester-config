@@ -184,6 +184,7 @@ A.app({
 
 
       ApiDefinition: {
+        title: "API Definition",
         fields: {
 
           name: Fields.text("API Name").required(),
@@ -197,7 +198,7 @@ A.app({
 
       ApiThrottlePolicy:
       {
-
+        title: "API Throttle Policy",
         fields: {
           policyName: Fields.text("Policy Name").required(),
           notes: Fields.textarea("Notes")
@@ -207,6 +208,7 @@ A.app({
       },
 
       ApiKey: {
+        title: "API Key",
         fields: {
           keyName: Fields.text("API Key").required(),
           apis: Fields.multiReference("API Assignments", "ApiDefinition"),
