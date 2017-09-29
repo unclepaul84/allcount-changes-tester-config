@@ -39,9 +39,6 @@ A.app({
       }
       ]
     },
-
-
-    ,
     {
       name: "Foo 2",
       entityTypeId: "Foo"
