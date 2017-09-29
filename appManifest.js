@@ -192,7 +192,8 @@ A.app({
           notes: Fields.textarea("Notes")
         },
 
-        name: "policyName"
+        referenceName: "name"
+       
 
       },
 
@@ -210,7 +211,7 @@ A.app({
       ApiKey: {
         title: "API Key",
         fields: {
-          keyName: Fields.text("API Key").required(),
+          keyName: Fields.text("Key Name").required(),
           apis: Fields.multiReference("API Assignments", "ApiDefinition"),
           key: Fields.text("API Key").readOnly(),
           isActive: Fields.checkbox("Is Active"),
