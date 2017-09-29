@@ -166,12 +166,18 @@ A.app({
 
 
       ApiKey: {
-        fields:{
-          key: Fields.text("API Key"),
+        fields: {
+          key: Fields.text("API Key").readOnly(),
           notes: Fields.textarea("Notes")
+        },
+        beforeCreate: function (Entity, Q) {
+
+          Entity.key = "blah";
+
+          return Q(null);
         }
       },
-      
+
       AllFileds: {
         fields: {
           text: Fields.text("Text"),
