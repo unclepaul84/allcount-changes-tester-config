@@ -31,7 +31,7 @@
             "type": "array",
             "title": "EndPoint Policies",
             "id": "/properties/endPointPolicies",
-            "format": "tabs",
+            "format": "table",
             "items": {
                 "type": "object",
                 "id": "/properties/endPointPolicies/items",
