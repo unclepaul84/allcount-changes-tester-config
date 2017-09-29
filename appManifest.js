@@ -36,7 +36,7 @@ A.app({
       {
         name: "Throttle Policy Assignments",
         entityTypeId: "ApiThrottlePolicyAssignment"
-      },
+      }
       ]
     },
 
