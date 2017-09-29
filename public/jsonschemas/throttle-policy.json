@@ -35,6 +35,7 @@
             "items": {
                 "type": "object",
                 "id": "/properties/endPointPolicies/items",
+                "title":"policy",
                 "defaultProperties": [
                     "route",
                     "perSecond",
