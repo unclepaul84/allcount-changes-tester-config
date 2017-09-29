@@ -28,7 +28,7 @@ A.app({
         {
           name: "API Definitions",
           entityTypeId: "ApiDefinition"
-        }, 
+        },
         {
           name: "API Keys",
           entityTypeId: "ApiKey"
@@ -189,7 +189,9 @@ A.app({
           name: Fields.text("API Name").required(),
           apiPolicy: Fields.reference("Policy", "ApiThrottlePolicy").required(),
           notes: Fields.textarea("Notes")
-        }
+        },
+
+        name: "policyName"
 
       },
 
@@ -200,7 +202,8 @@ A.app({
           policyName: Fields.text("Policy Name").required(),
           notes: Fields.textarea("Notes")
           /* TODO: add json field with policy */
-        }
+        },
+        referenceName: "policyName"
       },
 
       ApiKey: {
