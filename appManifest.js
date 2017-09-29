@@ -19,6 +19,10 @@ A.app({
   forceLocale: 'en',
   menuItems: [
     {
+      name: "Api Keys",
+      entityTypeId:"ApiKey"
+    },
+    {
       name: "Foo 2",
       entityTypeId: "Foo"
     },
@@ -153,13 +157,29 @@ A.app({
         },
         afterUpdate: function (NewEntity, OldEntity, AzureEventHubPublisher) {
 
-          if(NewEntity)
-             AzureEventHubPublisher.publish(NewEntity);
+          if (NewEntity)
+            AzureEventHubPublisher.publish(NewEntity);
           else
-             AzureEventHubPublisher.publish(OldEntity);
+            AzureEventHubPublisher.publish(OldEntity);
         }
       },
 
+    
+
+      ApiKey: {
+
+         fields:
+         {
+           key: Fields.text("API Key").ReadOnly(),
+           notes: Fields.textarea("Notes"),
+           
+          },
+          beforeCreate = function(Entity)
+          {
+            Entity.key = "bla";
+          }
+      }
+      ,
       AllFileds: {
         fields: {
           text: Fields.text("Text"),
