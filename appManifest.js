@@ -183,9 +183,9 @@ A.app({
           key: Fields.text("API Key").readOnly(),
           notes: Fields.textarea("Notes")
         },
-        beforeCreate: function (Entity, Q) {
+        beforeCreate: function (Entity, Q, UUID) {
 
-          Entity.key = uuidv1();
+          Entity.key = UUID().toUpperCase();
 
           return Q(null);
         }
