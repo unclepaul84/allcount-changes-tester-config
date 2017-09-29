@@ -1,3 +1,6 @@
+
+const uuidv1 = require('uuid/v1');
+
 A.app({
   appName: "AllCount Feature Demo",
   appIcon: "line-chart",
@@ -165,6 +168,16 @@ A.app({
       },
 
 
+      ApiThrottlePolicy:
+      {
+
+      },
+       
+      ApiThrottlePolicyAssignment :{
+
+
+      },
+
       ApiKey: {
         fields: {
           key: Fields.text("API Key").readOnly(),
@@ -172,7 +185,7 @@ A.app({
         },
         beforeCreate: function (Entity, Q) {
 
-          Entity.key = "blah";
+          Entity.key = uuidv1();
 
           return Q(null);
         }
