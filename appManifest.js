@@ -20,7 +20,7 @@ A.app({
   menuItems: [
     {
       name: "Api Keys",
-      entityTypeId:"ApiKey"
+      entityTypeId: "ApiKey"
     },
     {
       name: "Foo 2",
@@ -164,20 +164,19 @@ A.app({
         }
       },
 
-    
+
 
       ApiKey: {
 
-         fields:
-         {
-           key: Fields.text("API Key").ReadOnly(),
-           notes: Fields.textarea("Notes"),
-           
-          },
-          beforeCreate = function(Entity)
-          {
-            Entity.key = "bla";
-          }
+        fields:
+        {
+          key: Fields.text("API Key").ReadOnly(),
+          notes: Fields.textarea("Notes")
+
+        },
+        beforeCreate = function (Entity) {
+          Entity.key = "bla";
+        }
       }
       ,
       AllFileds: {
