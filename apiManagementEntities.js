@@ -64,6 +64,11 @@ A.app({
           // push out all api definitions    
           return Security.asSystem(function () {
 
+            function Send() {
+
+              AzureEventGridPublisher.publish('apiThrottlePolicy_update', null, payload);
+            }
+
             let policyId = 0;
 
             if (OldEntity) {
@@ -108,13 +113,7 @@ A.app({
 
                   return Q(null);
 
-                }).catch(x => Console.warn(x));;
-
-                function Send() {
-
-                  AzureEventGridPublisher.publish('apiThrottlePolicy_update', null, payload);
-                }
-
+                });
 
               }).catch(x => Console.warn(x));
             });
