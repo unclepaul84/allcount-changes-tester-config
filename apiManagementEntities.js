@@ -71,7 +71,7 @@ A.app({
         },
         beforeDelete: function (ValidationError) {
           throw new ValidationError({
-            policyName: 'Cannot delete! Deactivate instead.'
+            keyName: 'Cannot delete! Deactivate instead.'
           });
         },
         beforeCreate: function (Entity, Q, UUID) {
