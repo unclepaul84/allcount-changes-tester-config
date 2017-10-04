@@ -36,7 +36,11 @@ A.app({
           notes: Fields.textarea("Notes")
         },
 
+
         referenceName: "name",
+        beforeDelete: function (ValidationError) {
+          throw new ValidationError('Cannot delete! Deactivate instead.');
+        },
         afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) { apiDefinition_afterUpdate(NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId); },
         afterCreate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) { apiDefinition_afterUpdate(NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId); }
       },
@@ -55,6 +59,9 @@ A.app({
 
         },
         referenceName: "policyName",
+        beforeDelete: function (ValidationError) {
+          throw new ValidationError('Cannot delete! Deactivate instead.');
+        },
         afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) { apiThrottlePolicy_afterUpdate(NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId); },
         afterCreate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) { apiThrottlePolicy_afterUpdate(NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId); }
       },
@@ -70,9 +77,7 @@ A.app({
           /* TODO: maybe add expiration date */
         },
         beforeDelete: function (ValidationError) {
-          throw new ValidationError({
-            keyName: 'Cannot delete! Deactivate instead.'
-          });
+          throw new ValidationError('Cannot delete! Deactivate instead.');
         },
         beforeCreate: function (Entity, Q, UUID) {
 
