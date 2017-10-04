@@ -73,7 +73,7 @@ A.app({
         title: "API Key",
         fields: {
           keyName: Fields.text("Key Name").required().unique(),
-          apis: Fields.multiReference("API Assignments", "ApiDefinition"),
+          apis: Fields.multiReference("API Assignments", "ApiDefinition").required(),
           key: Fields.text("API Key").readOnly(),
           apiPolicy: Fields.reference("Policy Override", "ApiThrottlePolicy"),
           isActive: Fields.checkbox("Is Active"),
@@ -101,10 +101,30 @@ A.app({
 
             return Crud.crudForEntityType('ApiKey').readEntity(apiKeyId).then(apiKey => {
 
+              let payload = {};
 
-                     
+              payload["apiKey"] = apiKey;
 
+              if (apiKey.apiPolicy) {
 
+                Crud.crudForEntityType('ApiThrottlePolicy').readEntity(apiKey.apiPolicy.id).then(throttlePolicy => {
+
+                  payload["policyOverride"] = throttlePolicy;
+
+                  Send();
+
+                });
+
+              } else {
+
+                Send();
+              }
+
+              function Send() {
+                AzureEventGridPublisher.publish('apiKey_update', apiKeyId, payload);
+              }
+
+              return Q(null);
             });
 
           });
