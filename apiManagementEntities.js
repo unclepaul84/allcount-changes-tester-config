@@ -113,7 +113,7 @@ A.app({
 
                   Send();
 
-                });
+                }).catch(x=>console.warn(x));;
 
               } else {
 
@@ -121,11 +121,14 @@ A.app({
               }
 
               function Send() {
+                
+                console.warn("sending");
+
                 AzureEventGridPublisher.publish('apiKey_update', apiKeyId, payload);
               }
 
               return Q(null);
-            });
+            }).catch(x=>console.warn(x));;
 
           });
 
