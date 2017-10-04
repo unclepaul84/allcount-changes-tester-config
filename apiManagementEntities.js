@@ -36,7 +36,7 @@ A.app({
         },
 
         referenceName: "name",
-        afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher,Console) {
+        afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) {
           // push out api definition    
           return Security.asSystem(function () {
 
@@ -59,22 +59,22 @@ A.app({
 
         },
         referenceName: "policyName",
-        afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher,Console) {
+        afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) {
           // push out all keys with overrides
           // push out all api definitions    
           return Security.asSystem(function () {
 
 
-            return Crud.crudForEntityType('ApiDefinition').find({'apiPolicy.id': ObjectId("59cea23868376104c7355a9e")}).then(apiDefinitions => {
+            return Crud.crudForEntityType('ApiDefinition').find({ 'apiPolicy.id': ObjectId("59cea23868376104c7355a9e") }).then(apiDefinitions => {
 
               //find all api definitions which have this policy
 
 
 
 
-              
-            }).catch(x=>Console.warn(x));;
-                
+
+            }).catch(x => Console.warn(x));;
+
 
 
           });
@@ -97,7 +97,7 @@ A.app({
 
           return Q(null);
         },
-        afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher,Console) {
+        afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) {
           // need to package key and any policy overrides
           return Security.asSystem(function () {
 
@@ -124,7 +124,7 @@ A.app({
 
                   Send();
 
-                }).catch(x=>Console.warn(x));;
+                }).catch(x => Console.warn(x));;
 
               } else {
 
@@ -132,13 +132,13 @@ A.app({
               }
 
               function Send() {
-              
+
                 AzureEventGridPublisher.publish('apiKey_update', null, payload);
               }
 
               return Q(null);
 
-            }).catch(x=>Console.warn(x));
+            }).catch(x => Console.warn(x));
 
           });
 
