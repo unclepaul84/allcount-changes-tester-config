@@ -82,27 +82,45 @@ A.app({
 
               };
 
+              ///attach all api definitions which reference this policy
               return Crud.crudForEntityType('ApiDefinition').find({ 'apiPolicy.id': ObjectId(throttlePol.id) }).then(apiDefinitions => {
 
-                //find all api definitions which have this policy
+
                 apiDefinitions.forEach(function (element) {
 
                   payload.apiDefinitions.push(element);
+
                 });
 
                 Send();
 
-              }).catch(x => Console.warn(x));;
+                return Q(null);
+              }).then(x => {
+
+                //send out api key updates for any keys which have this policy explicitely set
+                return Crud.crudForEntityType('ApiKey').find({ 'apiPolicy.id': ObjectId(throttlePol.id) }).then(keys => {
+
+                  keys.forEach(function (apiKey) {
+
+                    PublishApiKeyChanged(apiKey, Crud, Console, AzureEventGridPublisher)
+
+                  });
+
+                  return Q(null);
+
+                }).catch(x => Console.warn(x));;
+
+                function Send() {
+
+                  AzureEventGridPublisher.publish('apiThrottlePolicy_update', null, payload);
+                }
 
 
-              function Send() {
+              }).catch(x => Console.warn(x));
+            });
 
-                AzureEventGridPublisher.publish('apiThrottlePolicy_update', null, payload);
-              }
-
-
-            }).catch(x => Console.warn(x));
           });
+
         }
       },
       ApiKey: {
@@ -137,32 +155,7 @@ A.app({
 
             return Crud.crudForEntityType('ApiKey').readEntity(apiKeyId).then(apiKey => {
 
-              let payload = {};
-
-              payload["apiKey"] = apiKey;
-
-              if (apiKey.apiPolicy) {
-
-                Crud.crudForEntityType('ApiThrottlePolicy').readEntity(apiKey.apiPolicy.id).then(throttlePolicy => {
-
-                  payload["apiPolicy"] = throttlePolicy;
-
-                  Send();
-
-                }).catch(x => Console.warn(x));;
-
-              } else {
-
-                Send();
-              }
-
-              function Send() {
-
-                blah(Console);
-                AzureEventGridPublisher.publish('apiKey_update', null, payload);
-              }
-
-              return Q(null);
+              return PublishApiKeyChanged(apiKey, Crud, Console, AzureEventGridPublisher)
 
             }).catch(x => Console.warn(x));
 
@@ -175,8 +168,31 @@ A.app({
   }
 });
 
-function blah(Console)
-{
-  Console.warn("i am blah!");
-   
+function PublishApiKeyChanged(apiKey, Crud, Console, AzureEventGridPublisher) {
+
+  let payload = {};
+
+  payload["apiKey"] = apiKey;
+
+  if (apiKey.apiPolicy) {
+
+    Crud.crudForEntityType('ApiThrottlePolicy').readEntity(apiKey.apiPolicy.id).then(throttlePolicy => {
+
+      payload["apiPolicy"] = throttlePolicy;
+
+      Send();
+
+    }).catch(x => Console.warn(x));;
+
+  } else {
+
+    Send();
+  }
+
+  function Send() {
+
+    AzureEventGridPublisher.publish('apiKey_update', null, payload);
+  }
+
+  return Q(null);
 }
