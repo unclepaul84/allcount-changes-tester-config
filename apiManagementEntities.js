@@ -64,10 +64,6 @@ A.app({
           // push out all api definitions    
           return Security.asSystem(function () {
 
-            function Send() {
-
-              AzureEventGridPublisher.publish('apiThrottlePolicy_update', null, payload);
-            }
 
             let policyId = 0;
 
@@ -86,6 +82,13 @@ A.app({
                 "apiDefinitions": []
 
               };
+
+
+              function Send() {
+
+                AzureEventGridPublisher.publish('apiThrottlePolicy_update', null, payload);
+              }
+
 
               ///attach all api definitions which reference this policy
               return Crud.crudForEntityType('ApiDefinition').find({ 'apiPolicy.id': ObjectId(throttlePol.id) }).then(apiDefinitions => {
