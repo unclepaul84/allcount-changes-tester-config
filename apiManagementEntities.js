@@ -36,7 +36,7 @@ A.app({
         },
 
         referenceName: "name",
-        afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher) {
+        afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher,Console) {
           // push out api definition    
           return Security.asSystem(function () {
 
@@ -59,7 +59,7 @@ A.app({
 
         },
         referenceName: "policyName",
-        afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher) {
+        afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher,Console) {
           // push out all keys with overrides
           // push out all api definitions    
           return Security.asSystem(function () {
@@ -86,7 +86,7 @@ A.app({
 
           return Q(null);
         },
-        afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher) {
+        afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher,Console) {
           // need to package key and any policy overrides
           return Security.asSystem(function () {
 
@@ -113,7 +113,7 @@ A.app({
 
                   Send();
 
-                }).catch(x=>console.warn(x));;
+                }).catch(x=>Console.warn(x));;
 
               } else {
 
@@ -121,14 +121,15 @@ A.app({
               }
 
               function Send() {
-                
-                console.warn("sending");
+              
+                Console.warn("sending");
 
                 AzureEventGridPublisher.publish('apiKey_update', apiKeyId, payload);
               }
 
               return Q(null);
-            }).catch(x=>console.warn(x));;
+
+            }).catch(x=>Console.warn(x));
 
           });
 
