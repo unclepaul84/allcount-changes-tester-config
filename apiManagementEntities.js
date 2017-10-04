@@ -110,7 +110,7 @@ A.app({
 
                   keys.forEach(function (apiKey) {
 
-                    PublishApiKeyChanged(apiKey, Crud, Console, AzureEventGridPublisher)
+                    PublishApiKeyChanged(apiKey, Crud, Console, AzureEventGridPublisher,Q)
 
                   });
 
@@ -157,7 +157,7 @@ A.app({
 
             return Crud.crudForEntityType('ApiKey').readEntity(apiKeyId).then(apiKey => {
 
-              return PublishApiKeyChanged(apiKey, Crud, Console, AzureEventGridPublisher)
+              return PublishApiKeyChanged(apiKey, Crud, Console, AzureEventGridPublisher, Q)
 
             }).catch(x => Console.warn(x));
 
@@ -170,7 +170,7 @@ A.app({
   }
 });
 
-function PublishApiKeyChanged(apiKey, Crud, Console, AzureEventGridPublisher) {
+function PublishApiKeyChanged(apiKey, Crud, Console, AzureEventGridPublisher, Q) {
 
   let payload = {};
 
