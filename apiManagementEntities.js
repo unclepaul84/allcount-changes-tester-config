@@ -42,7 +42,7 @@ A.app({
           throw new ValidationError('Cannot delete! Deactivate instead.');
         },
         afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) { apiDefinition_afterUpdate(NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId); },
-        afterCreate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) { apiDefinition_afterUpdate(NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId); }
+        afterCreate: function (NewEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) { apiDefinition_afterUpdate(NewEntity, null, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId); }
       },
       ApiThrottlePolicy:
       {
@@ -63,7 +63,7 @@ A.app({
           throw new ValidationError('Cannot delete! Deactivate instead.');
         },
         afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) { apiThrottlePolicy_afterUpdate(NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId); },
-        afterCreate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) { apiThrottlePolicy_afterUpdate(NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId); }
+        afterCreate: function (NewEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) { apiThrottlePolicy_afterUpdate(NewEntity, null, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId); }
       },
       ApiKey: {
         title: "API Key",
@@ -86,7 +86,7 @@ A.app({
           return Q(null);
         },
         afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) { apiKey_afterUpdate(NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId); },
-        afterCreate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) { apiKey_afterUpdate(NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId); }
+        afterCreate: function (NewEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) { apiKey_afterUpdate(NewEntity, null, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId); }
       }
 
     }
@@ -201,7 +201,6 @@ function apiThrottlePolicy_afterUpdate(NewEntity, OldEntity, Security, Q, Crud, 
         return Crud.crudForEntityType('ApiKey').find({ 'apiPolicy.id': ObjectId(throttlePol.id) }).then(keys => {
 
           keys.forEach(function (apiKey) {
-
 
             PublishApiKeyChanged(apiKey, Crud, Console, AzureEventGridPublisher, Q)
 
