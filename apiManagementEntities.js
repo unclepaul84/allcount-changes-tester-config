@@ -65,6 +65,17 @@ A.app({
           return Security.asSystem(function () {
 
 
+            return Crud.crudForEntityType('ApiDefinition').find({'apiPolicy.id': ObjectId("59cea23868376104c7355a9e")}).then(apiDefinitions => {
+
+              //find all api definitions which have this policy
+
+
+
+
+              
+            }).catch(x=>Console.warn(x));;
+                
+
 
           });
         }
