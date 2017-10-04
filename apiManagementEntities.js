@@ -64,19 +64,44 @@ A.app({
           // push out all api definitions    
           return Security.asSystem(function () {
 
+            let policyId = 0;
 
-            return Crud.crudForEntityType('ApiDefinition').find({ 'apiPolicy.id': ObjectId("59cea23868376104c7355a9e") }).then(apiDefinitions => {
+            if (OldEntity) {
+              policyId = OldEntity.id;
 
-              //find all api definitions which have this policy
+            } else {
+              policyId = NewEntity.id;
+            }
+
+            return Crud.crudForEntityType('ApiThrottlePolicy').readEntity(policyId).then(throttlePol => {
+
+              let payload = {
+
+                "apiThrottlePolicy": throttlePol,
+                "apiDefinitions": []
+
+              };
+
+              return Crud.crudForEntityType('ApiDefinition').find({ 'apiPolicy.id': ObjectId(throttlePol.id) }).then(apiDefinitions => {
+
+                //find all api definitions which have this policy
+                apiDefinitions.forEach(function (element) {
+
+                  payload.apiDefinitions.push(element);
+                });
+
+                Send();
+
+              }).catch(x => Console.warn(x));;
 
 
+              function Send() {
+
+                AzureEventGridPublisher.publish('apiThrottlePolicy_update', null, payload);
+              }
 
 
-
-            }).catch(x => Console.warn(x));;
-
-
-
+            }).catch(x => Console.warn(x));
           });
         }
       },
