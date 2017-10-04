@@ -110,8 +110,7 @@ A.app({
 
                   keys.forEach(function (apiKey) {
  
-                    Console.warn("api key changed", apiKey);
-                    
+                  
                     PublishApiKeyChanged(apiKey, Crud, Console, AzureEventGridPublisher,Q)
 
                   });
@@ -194,6 +193,8 @@ function PublishApiKeyChanged(apiKey, Crud, Console, AzureEventGridPublisher, Q)
   }
 
   function Send() {
+    
+    Console.warn("Sending apikey update", payload);
 
     AzureEventGridPublisher.publish('apiKey_update', null, payload);
   }
