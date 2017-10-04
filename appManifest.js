@@ -16,7 +16,7 @@ A.app({
   azureEventGridPublish: {
     url: 'https://pkallcounttester.westus2-1.eventgrid.azure.net/api/events',
     key: 'Kx6RwkxJzb70sRJ7phy3AtSQpQ4NLWkLVRyQyWJDOHA=',
-    autoPublishCrudActions: true,
+    autoPublishCrudActions: false,
   },
   forceLocale: 'en',
   menuItems: [
