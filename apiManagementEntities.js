@@ -40,7 +40,20 @@ A.app({
           // push out api definition    
           return Security.asSystem(function () {
 
+            let apiDefId = 0;
 
+            if (OldEntity) {
+              apiDefId = OldEntity.id;
+
+            } else {
+              apiDefId = NewEntity.id;
+            }
+
+            return Crud.crudForEntityType('ApiDefinition').readEntity(apiDefId).then(apiDef => {
+
+                AzureEventGridPublisher.publish('apiDefinition_update', null, { apiDefinition:apiDef });
+
+            }).catch(x => Console.warn(x));
 
           });
         }
@@ -89,10 +102,8 @@ A.app({
                 AzureEventGridPublisher.publish('apiThrottlePolicy_update', null, payload);
               }
 
-
               ///attach all api definitions which reference this policy
               return Crud.crudForEntityType('ApiDefinition').find({ 'apiPolicy.id': ObjectId(throttlePol.id) }).then(apiDefinitions => {
-
 
                 apiDefinitions.forEach(function (element) {
 
@@ -109,9 +120,9 @@ A.app({
                 return Crud.crudForEntityType('ApiKey').find({ 'apiPolicy.id': ObjectId(throttlePol.id) }).then(keys => {
 
                   keys.forEach(function (apiKey) {
- 
-                  
-                    PublishApiKeyChanged(apiKey, Crud, Console, AzureEventGridPublisher,Q)
+
+
+                    PublishApiKeyChanged(apiKey, Crud, Console, AzureEventGridPublisher, Q)
 
                   });
 
@@ -193,8 +204,6 @@ function PublishApiKeyChanged(apiKey, Crud, Console, AzureEventGridPublisher, Q)
   }
 
   function Send() {
-    
-    Console.warn("Sending apikey update", payload);
 
     AzureEventGridPublisher.publish('apiKey_update', null, payload);
   }
