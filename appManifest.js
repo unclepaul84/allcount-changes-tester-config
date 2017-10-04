@@ -268,9 +268,11 @@ A.app({
                 name: "DeleteAll",
                 perform: function (Crud, User, Actions, Security) {
 
+                  return Security.asSystem(function () {
 
-                  return Actions.modalResult('test', 'test');
+                    return Actions.modalResult('test', 'test');
 
+                  });
 
                 },
 
