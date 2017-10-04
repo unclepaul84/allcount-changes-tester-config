@@ -158,6 +158,7 @@ A.app({
 
               function Send() {
 
+                blah(Console);
                 AzureEventGridPublisher.publish('apiKey_update', null, payload);
               }
 
@@ -173,3 +174,9 @@ A.app({
     }
   }
 });
+
+function blah(Console)
+{
+  Console.warn("i am blah!");
+   
+}
