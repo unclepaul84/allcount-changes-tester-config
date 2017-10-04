@@ -58,7 +58,7 @@ A.app({
               };
 
               //attach throttle policy
-              return Crud.crudForEntityType('ApiThrottlePolicy').readEntity(policyId).then(throttlePol => {
+              return Crud.crudForEntityType('ApiThrottlePolicy').readEntity(apiDef.apiPolicy.id).then(throttlePol => {
 
                 payload.apiThrottlePolicy = throttlePol;
                
