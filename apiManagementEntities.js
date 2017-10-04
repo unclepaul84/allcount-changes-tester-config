@@ -1,6 +1,30 @@
 
 
 A.app({
+
+
+  menuItems: [
+    {
+      name: "API",
+      icon: "list",
+      children: [
+        {
+          name: "API Definitions",
+          entityTypeId: "ApiDefinition"
+        },
+        {
+          name: "API Keys",
+          entityTypeId: "ApiKey"
+        },
+        {
+          name: "API Throttle Policies",
+          entityTypeId: "ApiThrottlePolicy"
+        }
+
+      ]
+    }
+  ],
+
   entities: function (Fields) {
     return {
       ApiDefinition: {
