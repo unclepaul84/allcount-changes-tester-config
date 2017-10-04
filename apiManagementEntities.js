@@ -36,7 +36,7 @@ A.app({
         },
 
         referenceName: "name",
-        afterUpdate: apiDefinition_afterUpdate
+        afterUpdate: function(NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) { apiDefinition_afterUpdate(NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId);}
       },
       ApiThrottlePolicy:
       {
@@ -52,7 +52,7 @@ A.app({
 
         },
         referenceName: "policyName",
-        afterUpdate: apiThrottlePolicy_afterUpdate
+        afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) { apiThrottlePolicy_afterUpdate(NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId); }
       },
       ApiKey: {
         title: "API Key",
@@ -71,7 +71,7 @@ A.app({
 
           return Q(null);
         },
-        afterUpdate: apiKey_afterUpdate
+        afterUpdate: function (NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId) { apiKey_afterUpdate(NewEntity, OldEntity, Security, Q, Crud, AzureEventGridPublisher, Console, ObjectId); }
       }
 
     }
