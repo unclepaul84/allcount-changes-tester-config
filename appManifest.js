@@ -13,9 +13,9 @@ A.app({
     aadGroup2RoleMapping: [{ group: "Company Administrator", role: "admin" }, { group: "allcountmanagers", role: "manager" }],
     isDefaultLoginMethod: true
   },
-  azureEventHubsPublish: {
-    connectionString: 'Endpoint=sb://pkallcounttester.servicebus.windows.net/;SharedAccessKeyName=sender;SharedAccessKey=Cse3ExAge3Pb0YJoyxTph7NFs5vDCrTqSyGn3ugwqn8=;EntityPath=pkallcounttester',
-    path: 'pkallcounttester',
+  azureEventGridPublish: {
+    url: 'https://pkallcounttester.westus2-1.eventgrid.azure.net/api/events',
+    key: 'Kx6RwkxJzb70sRJ7phy3AtSQpQ4NLWkLVRyQyWJDOHA=',
     autoPublishCrudActions: true,
   },
   forceLocale: 'en',
@@ -173,12 +173,12 @@ A.app({
           })
 
         },
-        afterUpdate: function (NewEntity, OldEntity, AzureEventHubPublisher) {
+        afterUpdate: function (NewEntity, OldEntity, AzureEventGridPublisher) {
 
           if (NewEntity)
-            AzureEventHubPublisher.publish(NewEntity);
+            AzureEventGridPublisher.publish('newFoo', 'urn://Allcount', NewEntity);
           else
-            AzureEventHubPublisher.publish(OldEntity);
+            AzureEventGridPublisher.publish('updateFoo', 'urn://Allcount', OldEntity);
         }
       },
       ApiDefinition: {
@@ -191,7 +191,7 @@ A.app({
         },
 
         referenceName: "name"
-       
+
 
       },
       ApiThrottlePolicy:
@@ -201,11 +201,11 @@ A.app({
           policyName: Fields.text("Policy Name").required().unique(),
           notes: Fields.textarea("Notes"),
           policy: Fields.json("Policy", {
-            
-                        $ref: "/jsonschemas/throttle-policy.json"
-            
-                      }).required(),
-        
+
+            $ref: "/jsonschemas/throttle-policy.json"
+
+          }).required(),
+
         },
         referenceName: "policyName"
       },
