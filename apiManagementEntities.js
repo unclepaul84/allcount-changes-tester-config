@@ -109,7 +109,9 @@ A.app({
                 return Crud.crudForEntityType('ApiKey').find({ 'apiPolicy.id': ObjectId(throttlePol.id) }).then(keys => {
 
                   keys.forEach(function (apiKey) {
-
+ 
+                    Console.warn("api key changed", apiKey);
+                    
                     PublishApiKeyChanged(apiKey, Crud, Console, AzureEventGridPublisher,Q)
 
                   });
