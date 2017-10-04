@@ -109,7 +109,7 @@ A.app({
 
                 Crud.crudForEntityType('ApiThrottlePolicy').readEntity(apiKey.apiPolicy.id).then(throttlePolicy => {
 
-                  payload["policyOverride"] = throttlePolicy;
+                  payload["apiPolicy"] = throttlePolicy;
 
                   Send();
 
@@ -122,9 +122,7 @@ A.app({
 
               function Send() {
               
-                Console.warn("sending");
-
-                AzureEventGridPublisher.publish('apiKey_update', apiKeyId, payload);
+                AzureEventGridPublisher.publish('apiKey_update', null, payload);
               }
 
               return Q(null);
