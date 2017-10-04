@@ -51,7 +51,21 @@ A.app({
 
             return Crud.crudForEntityType('ApiDefinition').readEntity(apiDefId).then(apiDef => {
 
-                AzureEventGridPublisher.publish('apiDefinition_update', null, { apiDefinition:apiDef });
+              let payload = {
+
+                apiDefinition: apiDef,
+                apiThrottlePolicy: null
+              };
+
+              //attach throttle policy
+              return Crud.crudForEntityType('ApiThrottlePolicy').readEntity(policyId).then(throttlePol => {
+
+                payload.apiThrottlePolicy = throttlePol;
+               
+                AzureEventGridPublisher.publish('apiDefinition_update', null, payload);
+
+              });
+
 
             }).catch(x => Console.warn(x));
 
