@@ -54,9 +54,8 @@ A.app({
 
 
   webHooks: {
-
-    "testwebhook": function (Crud, User, Body, Params, Query, Res, Q) {
-      return Q(Res.json("{'hello':true}"));
+    "getPing": function (Crud, User, Body, Params, Query, Res, Q) {
+      return Q(Res.json(User));
     }
   },
 
