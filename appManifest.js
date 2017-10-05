@@ -13,11 +13,7 @@ A.app({
     aadGroup2RoleMapping: [{ group: "Company Administrator", role: "admin" }, { group: "allcountmanagers", role: "manager" }],
     isDefaultLoginMethod: true
   },
-  azureEventGridPublish: {
-    url: 'https://pkallcounttester.westus2-1.eventgrid.azure.net/api/events',
-    key: 'Kx6RwkxJzb70sRJ7phy3AtSQpQ4NLWkLVRyQyWJDOHA=',
-    autoPublishCrudActions: false,
-  },
+
   forceLocale: 'en',
   menuItems: [
 
