@@ -51,6 +51,16 @@ A.app({
 
   ],
   roles: ['owner', 'manager'],
+
+
+  webHooks: {
+
+    testwebhook: function(Body,Params,Query,Res,Q)
+    {
+      return Q(Res.json("{'hello':true}"));
+    }
+  },
+
   entities: function (Fields) {
     return {
       Foo: {
