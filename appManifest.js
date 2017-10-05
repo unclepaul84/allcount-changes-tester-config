@@ -55,7 +55,7 @@ A.app({
 
   webHooks: {
 
-    "testwebhook": function (Body, Params, Query, Res, Q) {
+    "testwebhook": function (Crud, User, Body, Params, Query, Res, Q) {
       return Q(Res.json("{'hello':true}"));
     }
   },
