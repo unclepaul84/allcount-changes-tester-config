@@ -58,7 +58,7 @@ A.app({
           }).required(),
 
         },
-        layout: { V: ['policyName', 'notes', 'isActive', { V: ['policy'], labelWidth: 0 }], labelWidth: 4 },
+        layout: { V: ['policyName', 'notes', 'isActive', { V: ['policy'], labelWidth: 0 }], labelWidth: 1 },
         referenceName: "policyName",
         beforeDelete: function (ValidationError) {
           throw new ValidationError('Cannot delete! Deactivate instead.');
