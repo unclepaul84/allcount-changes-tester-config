@@ -55,7 +55,7 @@ A.app({
 
             $ref: "/jsonschemas/throttle-policy.json"
 
-          }).required(),
+          }).required().readOnly(),
 
         },
         layout: { V: ['policyName', 'notes', 'isActive', { V: ['policy'], labelWidth: 0 }], labelWidth: 1 },
