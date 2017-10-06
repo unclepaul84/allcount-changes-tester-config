@@ -312,7 +312,21 @@ A.app({
 
 
             actionTarget: 'single-item'
+          },
+
+          {
+            id: 'azurePortal',
+            name: "Go To Azure Portal",
+            perform: function (Crud, User, Actions, Security) {
+
+              return Actions.openNewWindow("https://portal.azure.com/#resource/subscriptions/944fc148-b131-481f-bafc-9dc4eb9a3fa4/resourcegroups/FtBackOffice/overview")
+
+            },
+            actionTarget: 'single-item'
           }
+
+
+
         ]
 
       },
