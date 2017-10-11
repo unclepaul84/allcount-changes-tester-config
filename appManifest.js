@@ -333,7 +333,7 @@ A.app({
       AllFiledsParent: {
         fields: {
           name: Fields.text("Name"),
-          myAllFileds: Fields.relation('My All Fields', 'AllFileds', 'barReference'),
+          myAllFileds: Fields.relation('My All Fields', 'AllFiledsView', 'barReference'),
         },
         referenceName: "name"
       }
